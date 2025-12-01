@@ -7,7 +7,7 @@
 class PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact _contacts[8];
 		int	_index;
 		bool	_isFull;
 
