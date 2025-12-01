@@ -113,3 +113,91 @@ void	PhoneBook::add()
 	}
 	std::cout << "Contact added successfully" << std::endl;
 }
+
+void	printer(const std::string& field)
+{
+	const int  max_w = 10;
+	if (field.length() > max_w)
+	{
+		std::cout << std::setw(max_w) << field.substr(0,9) + ".";
+	}
+	else
+		std::cout << std::setw(max_w) << field;
+}
+
+void	PhoneBook::search()
+{
+	std::cout << std::right;
+
+	std::cout << "--------------------------------------" << std::endl;
+	std::cout << "|" << std::setw(10) << "Index"
+		  << "|" << std::setw(10) << "First Name"
+		  << "|" << std::setw(10) << "Last Name"
+		  << "|" << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+
+	int	limit;
+	if (this->_isFull == true)
+		limit = 8;
+	else
+		limit = this->_index;
+
+	for (int i = 0; i < limit; i++)
+	{
+		std::cout << "|" << std::setw(10) << (i + 1);
+		std::cout << "|"; printer(this->_contacts[i].getFirstName());
+		std::cout << "|"; printer(this->_contacts[i].getLastName());
+		std::cout << "|"; printer(this->_contacts[i].getNickname());
+		std::cout << "|" << std::endl;
+	}
+
+	std::cout << "--------------------------------------" << std::endl;
+
+
+	
+
+	std::string input;
+	int	print_i;
+
+	while (true)
+	{
+		std::cout << "Enter index of contact to display";
+		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return ;
+		if (input.empty())
+			continue;
+
+		std::stringstream ss(input);
+		if (!(ss >> print_i))
+		{
+			std::cout << "Invalid input " << std::endl;
+			continue;
+		}
+
+		char	leftover;
+		if (ss.get(leftover))
+		{
+			std::cout << "Invalid input" << std::endl;
+			continue;
+		}
+
+		if (print_i >= 1 && print_i <= limit)
+		{
+			const Contact& c = this->_contacts[print_i - 1];
+			std::cout << "\n*** Contact Details ***\n";
+			std::cout << "First Name:   " << c.getFirstName() << std::endl;
+			std::cout << "Last Name:   " << c.getLastName() << std::endl;
+			std::cout << "Nickname:   " << c.getNickname() << std::endl;
+			std::cout << "Phone Number:   " << c.getPhoneNumber() << std::endl;
+			std::cout << "Darkest Secret:   " << c.getDarkestSecret() << std::endl;
+			std::cout << std::endl;
+			return ;
+		}
+		else
+			std::cout << "Invalid Index.. Please Try Again" << std::endl;
+	}
+
+
+
+}
