@@ -22,20 +22,21 @@ class Fixed {
 	
 	public:
 		Fixed();
-		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
-		~Fixed();
-
-		int	getRawBits(void) const;
-		void	setRawBits(int const bit);
+		Fixed(const Fixed& other);	
 		// CONSTRUCTOR: int -> fixed point	
 		Fixed(const int n);
 		// CONSTRUCTOR: float -> fixed point
 		Fixed(const float n);
+		Fixed& operator=(const Fixed& other);
+		~Fixed();
+
 		// fixed point -> float
 		float toFloat(void) const;
 		// fixed point -> int
 		int toInt(void) const;
+
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
