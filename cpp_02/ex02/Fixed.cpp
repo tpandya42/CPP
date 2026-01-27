@@ -61,9 +61,105 @@ void	Fixed::setRawBits(int const raw)
 	this->_fixedPointNumber = raw;
 }
 
+// ************ Comparison Operators
+
+bool	Fixed::operator>(const Fixed &other) const
+{
+	return this->_fixedPointNumber > other.getRawBits();
+}
+
+bool	Fixed::operator<(const Fixed &other) const
+{
+	return this->_fixedPointNumber < other.getRawBits();
+}
+
+bool	Fixed::operator>=(const Fixed &other) const
+{
+	return this->_fixedPointNumber >= other.getRawBits();
+}
+
+bool	Fixed::operator<=(const Fixed &other) const
+{
+	return this->_fixedPointNumber <= other.getRawBits();
+}
+
+bool	Fixed::operator==(const Fixed &other) const
+{
+	return this->_fixedPointNumber == other.getRawBits();
+}
+
+bool	Fixed::operator!=(const Fixed &other) const 
+{
+	return this->_fixedPointNumber != other.getRawBits();
+}
+
+// *************** Arithmetic Operators
+
+Fixed	Fixed::operator+(const Fixed &other) const
+{
+	return Fixed(this->toFloat() + other.toFloat());
+}
+
+Fixed	Fixed::operator-(const Fixed &other) const
+{
+	return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed	Fixed::operator*(const Fixed &other) const
+{
+	return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed &other) const
+{
+	return Fixed(this->toFloat() / other.toFloat());
+}
+
+
+// *************** Increment/Decrement Operators
+
+// (++a)
+Fixed 		&Fixed::operator++()
+{
+	this->_fixedPointNumber++;
+	return *this;
+}
+
+// (a++)
+Fixed 		Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	operator++();
+	return temp;
+}
+
+// (--a)
+Fixed	&Fixed::operator--()
+{
+	this->_fixedPointNumber--;
+	return *this;
+}
+
+// (a--)
+Fixed 	Fixed::operator--(int)
+{
+	Fixed	temp(*this);
+	operator--();
+	return temp;
+}
+
+
+
+// **************** Min/Max Function
+
+
+
+
+
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
 	os << fixed.toFloat();
 	return os;
 }
+
 
