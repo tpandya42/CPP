@@ -141,12 +141,17 @@ Fixed	&Fixed::operator--()
 }
 
 // (a--)
-Fixed 	Fixed::operator++(int)
+Fixed 	Fixed::operator--(int)
 {
 	Fixed	temp(*this);
 	operator--();
 	return temp;
 }
+
+
+
+// **************** Min/Max Function
+
 
 
 
@@ -156,7 +161,5 @@ std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 	os << fixed.toFloat();
 	return os;
 }
-
-
 
 

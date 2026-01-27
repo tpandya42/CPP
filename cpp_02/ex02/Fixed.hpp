@@ -54,6 +54,7 @@ class Fixed {
 		Fixed &operator--();
 		Fixed operator--(int);
 
+		// Min/Max
 		static Fixed &min(Fixed &a, Fixed &b);
 		static const Fixed &min(const Fixed &a, const Fixed &b);
 		static Fixed &max(Fixed &a, Fixed &b);
