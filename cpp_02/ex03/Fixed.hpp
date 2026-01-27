@@ -9,7 +9,7 @@
  * COPY CONSTRUCTOR : It takes reference to another object of same class
  * 		      We use const because we basically copy from 'other'...
  *
- * ASSIGNMENT OPERATOR : 'operator' -> special function name.. it tells that whenever you see the'=' sign between two objects of same class., the run this funciton
+ * ASSIGNMENT OPERATOR : 'operator' -> special function name.. it tells that whenever you see the'=' sign between two objects of same class., then run this funciton
  *
  * 		-> It returns a reference to the object itself (*this)....
  * 		-> a=b=c... b=c happens first which returns b, then a =b..

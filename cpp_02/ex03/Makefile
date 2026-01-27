@@ -1,10 +1,10 @@
-NAME = fixed
+NAME = bsp
 
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -I
 STD = -std=c++98
 RM = rm -f
-SRC = Fixed.cpp main.cpp
+SRC = Fixed.cpp main.cpp Point.cpp bsp.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
