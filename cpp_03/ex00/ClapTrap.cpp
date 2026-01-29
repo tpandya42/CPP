@@ -3,7 +3,7 @@
 ClapTrap::ClapTrap(std::string name)
 	: name(name), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	std::cout << "Default Constructor for " << name << " has been called " << std::endl;
+	std::cout << "< ClapTrap> Default Constructor for " << name << " has been called " << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -12,7 +12,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	this->HitPoints = other.HitPoints;
 	this->EnergyPoints = other.EnergyPoints;
 	this->AttackDamage = other.AttackDamage;
-	std::cout << "Copy Constructor has been called " << std::endl;
+	std::cout << "< ClapTrap> Copy Constructor has been called " << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &src)
@@ -24,14 +24,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &src)
 		this->EnergyPoints = src.EnergyPoints;
 		this->AttackDamage = src.AttackDamage;
 	}
-	std::cout << "Copy assignment Constructor has been called " << std::endl;
+	std::cout << "<ClapTrap> Copy assignment Constructor has been called " << std::endl;
 	return *this;
 }
 
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout <<" Default Destructor has been called " << std::endl;
+	std::cout <<"<ClapTrap> Default Destructor has been called " << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
