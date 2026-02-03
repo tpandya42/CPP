@@ -4,7 +4,7 @@ CPP = c++
 FLAGS = -Wall -Werror -Wextra -I
 STD = -std=c++98
 RM = rm -f
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC = main.cpp ClapTrap.cpp FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

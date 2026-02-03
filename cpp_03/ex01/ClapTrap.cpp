@@ -3,7 +3,7 @@
 ClapTrap::ClapTrap(std::string name)
 	: name(name), HitPoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	std::cout << "<ClapTrap> Default Constructor for " << name << " has been called " << std::endl;
+	std::cout << "< ClapTrap> Default Constructor for " << name << " has been called " << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -12,7 +12,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	this->HitPoints = other.HitPoints;
 	this->EnergyPoints = other.EnergyPoints;
 	this->AttackDamage = other.AttackDamage;
-	std::cout << "<ClapTrap> Copy Constructor has been called " << std::endl;
+	std::cout << "< ClapTrap> Copy Constructor has been called " << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &src)
@@ -59,7 +59,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->EnergyPoints <= amount)
+	if (this->EnergyPoints <= 0)
 	{
 		std::cout << "ClapTrap " << this->name << " Can't get repaired.. Need more energy!!!" << std::endl;
 		return ;

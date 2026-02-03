@@ -10,7 +10,6 @@ class ClapTrap {
 		unsigned int	HitPoints;
 		unsigned int	EnergyPoints;
 		unsigned int	AttackDamage;
-		ClapTrap();
 
 	public:
 		ClapTrap(std::string name);
