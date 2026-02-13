@@ -1,4 +1,4 @@
-NAME = JUSTanANIMAL
+NAME = JUSTanAbsolutE_ANIMAL
 
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -I

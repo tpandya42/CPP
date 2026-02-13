@@ -20,7 +20,7 @@ Animal& Animal::operator=(const Animal& other)
 	return (*this);
 }
 
-Animal::~Animal()
+Animal:: ~Animal()
 {
 	std::cout << "<Animal> Destructor called" << std::endl;
 }
