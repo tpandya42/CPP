@@ -13,6 +13,9 @@ class FragTrap : virtual public ClapTrap
 		FragTrap(const FragTrap &other);
 		FragTrap& operator=(const FragTrap &src);
 		~FragTrap();
+		void	attack(std::string const& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 		void	highFivesGuys(void);
 };
 

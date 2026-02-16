@@ -23,7 +23,7 @@ int main(void)
     for (int i = 0; i < 11; i++)
         clapTrap3.attack("some other target");
 
-        std::cout << std::endl;
+    std::cout << std::endl;
     
     ClapTrap clapTrap4("4");
     ClapTrap clapTrap5(clapTrap4);

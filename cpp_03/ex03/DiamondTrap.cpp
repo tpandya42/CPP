@@ -25,6 +25,21 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "< DiamondTrap > " << this->_name << " has been destroyed.... " << std::endl;
 }
 
+void	DiamondTrap::attack(const std::string& target)
+{
+	ScavTrap::attack(target);
+}
+
+void	DiamondTrap::takeDamage(unsigned int amount)
+{
+	ScavTrap::takeDamage(amount);
+}
+
+void	DiamondTrap::beRepaired(unsigned int amount)
+{
+	ScavTrap::beRepaired(amount);
+}
+
 void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "\nDiamondTrap name is: " << this->_name << std::endl << "ClapTrap name is: " << this->name << std::endl;
