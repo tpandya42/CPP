@@ -1,4 +1,4 @@
-NAME = JUSTanANIMAL
+NAME = NoWorldOnFire
 
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -I

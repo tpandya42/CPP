@@ -1,4 +1,4 @@
-NAME = JUSTanANIMAL
+NAME = AbstractClassItIs
 
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -I
