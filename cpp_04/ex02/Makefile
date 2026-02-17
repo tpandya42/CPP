@@ -1,10 +1,10 @@
-NAME = JUSTanAbsolutE_ANIMAL
+NAME = JUSTanANIMAL
 
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -I
 STD = -std=c++98
 RM = rm -f
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

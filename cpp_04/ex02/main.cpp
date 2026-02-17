@@ -1,58 +1,43 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include <iostream>
 
-int	main(void)
-{
-	std::cout << "TEST ROUND 1 ( FROM SUBJECT )" << std::endl;
-	const Animal	*j = new Dog();
-	const Animal	*i = new Cat();
+int main() {
+    const int num_animals = 4;
+    Animal* animals[num_animals];
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); // will output the cat sound!
-	j->makeSound();
+    // Create half Dogs and half Cats
+    for (int i = 0; i < num_animals / 2; ++i) {
+        animals[i] = new Dog();
+    }
+    for (int i = num_animals / 2; i < num_animals; ++i) {
+        animals[i] = new Cat();
+    }
 
-	std::cout << "\n\nTEST ROUND 2 ( WRONG CLASS TeSTS )" << std::endl;
-	const WrongAnimal* wrong_meta = new WrongAnimal();
-	const WrongAnimal* wrong_i = new WrongCat();
-	const WrongCat* real_wrong_cat = new WrongCat();
+    // Delete all animals
+    for (int i = 0; i < num_animals; ++i) {
+        delete animals[i];
+    }
 
-	std::cout << wrong_i->getType() << " " << std::endl;
-	wrong_meta->makeSound();
-	wrong_i->makeSound();
-	real_wrong_cat->makeSound();
+    std::cout << "\n--- Deep Copy Test ---\n" << std::endl;
 
-	std::cout << "\n\nTEST ROUND 3 (ADDitionAL TESTS)" << std::endl;
-	std::cout << "\n -> COPY CONSTRUCTOR TEST" << std::endl;
-	Dog basic_dog;
-	{
-		Dog tmp = basic_dog;
-		std::cout << "tmp dog type _> " << tmp.getType() << std::endl;
-		tmp.makeSound();
-	}
-	std::cout << std::endl;
-	Cat basic_cat;
-	{
-		Cat tmp;
-		tmp = basic_cat;
-		std::cout << "tmp cat type -> " << tmp.getType() << std::endl;
-		tmp.makeSound();
-	}
-	std::cout << "basic_dog type: " << basic_dog.getType() << std::endl;
-	basic_dog.makeSound();
-	std::cout << "basic_cat type: " << basic_cat.getType() << std::endl;
-	basic_cat.makeSound();
+    // Test deep copy for Dog
+    std::cout << "-> Testing Dog copy" << std::endl;
+    Dog* original_dog = new Dog();
+    Dog* copy_dog = new Dog(*original_dog);
+    delete original_dog; // Delete original, copy should still be fine
+    copy_dog->makeSound();
+    delete copy_dog;
 
-	std::cout << "\n\n TEST ROUND 4 (Cleanupi )" << std::endl;
-	delete (j);
-	delete (i);
-	delete (wrong_meta);
-	delete (wrong_i);
-	delete (real_wrong_cat);
+    std::cout << "\n-> Testing Cat copy" << std::endl;
+    // Test deep copy for Cat
+    Cat* original_cat = new Cat();
+    Cat* copy_cat = new Cat();
+    *copy_cat = *original_cat;
+    delete original_cat; // Delete original, copy should still be fine
+    copy_cat->makeSound();
+    delete copy_cat;
 
-	return 0;
+    return 0;
 }

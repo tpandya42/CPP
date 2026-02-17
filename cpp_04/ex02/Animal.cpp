@@ -20,15 +20,11 @@ Animal& Animal::operator=(const Animal& other)
 	return (*this);
 }
 
-Animal:: ~Animal()
+Animal::~Animal()
 {
 	std::cout << "<Animal> Destructor called" << std::endl;
 }
 
-void Animal::makeSound() const
-{
-	std::cout << "<Animal> Just an animal making some sound" << std::endl;
-}
 
 std::string Animal::getType() const
 {
