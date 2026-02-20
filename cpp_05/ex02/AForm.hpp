@@ -9,7 +9,7 @@ class Bureaucrat;
 
 class AForm 
 {
-	private:
+	protected:
 		std::string const name;
 		bool	sign;
 		const int	toSign;
