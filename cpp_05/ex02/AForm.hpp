@@ -1,6 +1,7 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+#include <exception>
 #include <iostream>
 #include <string>
 #include "Bureaucrat.hpp"
@@ -9,18 +10,19 @@ class Bureaucrat;
 
 class AForm 
 {
-	protected:
+	private:
 		std::string const name;
 		bool	sign;
 		const int	toSign;
 		const int	toExec;
+		virtual void exec() const = 0;
 	
 	public:
 		AForm();
 		AForm(std::string name, bool sign, const int toSign, const int toExec);
 		AForm(const AForm &other);
 		AForm& operator=(const AForm& other);
-		virtual ~AForm() = 0;
+		virtual ~AForm();
 
 		//Getters
 		std::string		getName() const;
@@ -31,6 +33,7 @@ class AForm
 
 		// Member Function
 		void	beSigned(Bureaucrat &b);
+		void	execute(Bureaucrat const & executor) const;
 
 		//Exception as well
 		class GradeTooHighException : public std::exception {
@@ -43,9 +46,10 @@ class AForm
 				virtual const char* what() const throw();
 		};
 
-
-
-
+		class FormNotSignedExecption : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 // OVerload (<<)

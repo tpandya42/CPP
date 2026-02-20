@@ -3,27 +3,40 @@
 
 // For now.. cause it makes no sense to me
 //ShrubberyCreationForm::ShrubberyCreationForm() : AForm(){}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", false, 145, 137), target(target){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const name, bool sign, const int toSign, const int toExec) : AForm(name, sign, toSign, toExec) {
-	if (toSign > 146)
-		AForm::GradeTooLowException;
-	if (toExec > 137)
-		AForm::GradeTooLowException;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), target(other.target){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : name(other.name), sign(other.sign), toSign(other.toSign), toExec(other.toExec){}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
 	if (this != &other)
 	{
-		this->sign = other.sign;
+		AForm::operator=(other);
 	}
 	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
-void	ShrubberyCreationForm::Shrubby()const {
 
-}
+void 	ShrubberyCreationForm::exec()const {
+	std::string fname = this->target + "_shrubbery";
+	std::ofstream outfile(fname.c_str());
+	if (!outfile)
+	{
+		std::cerr << "Can't Open file" << std::endl;
+		return ;
+	}
+	outfile << R"( 
+     /\
+    /**\
+   /****\
+  /******\
+ /********\
+     ||||
+     ||||
+	)";
+	outfile.close();
+
+}                                                                                                  
