@@ -20,7 +20,7 @@ static bool is_char(const std::string& str){
 
 static bool is_float(const std::string& str){
 	if (str == "-inff" || str == "+inff" || str == "nanf") return true;
-	if (str.length() < 2 || str.back() != 'f') return false;
+	if (str.length() < 2 || str[str.size() - 1] != 'f') return false;
 	bool 	dot = false;
 	size_t i = (str[0] == '+' || str[0] == '-') ? 1:0;
 	if (i == str.length() -1) return false;
@@ -73,7 +73,7 @@ static int for_int(const std::string& str)
 static float for_float(const std::string& str)
 {
     std::string to_parse = str;
-    if (!str.empty() && str.back() == 'f') {
+    if (!str.empty() && str[str.size() -1] == 'f') {
         to_parse = str.substr(0, str.length() - 1);
     }
     float num;
@@ -95,8 +95,8 @@ static double for_double(const std::string& str)
 static void 	printChar(char c){
 	std::cout << "char: '" << c << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(c) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 static void printInt(int nbr)
@@ -108,11 +108,12 @@ static void printInt(int nbr)
         else
             std::cout << "char: Non displayable" << std::endl;
     }
-    else
-        std::cout << "char: impossible" << std::endl;
+    else {
+		std::cout << "char: impossible" << std::endl;
+	}
 	std::cout << "int: " << nbr << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(nbr) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(nbr) << std::endl;
+	std::cout << "float: " << static_cast<float>(nbr) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(nbr) << std::endl;
 }
 
 static void printFloat(float nbr)
@@ -126,11 +127,12 @@ static void printFloat(float nbr)
 
     if (std::isnan(nbr) || std::isinf(nbr) || nbr > std::numeric_limits<int>::max() || nbr < std::numeric_limits<int>::min())
         std::cout << "int: impossible" << std::endl;
-    else
-        std::cout << "int: " << static_cast<int>(nbr) << std::endl;
+    else{
+		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
+	}
 
-	std::cout << std::fixed << std::setprecision(1) << "float: " << nbr << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(nbr) << std::endl;
+	std::cout << "float: " << nbr << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(nbr) << std::endl;
 }
 
 static void printDouble(double nbr)
@@ -144,11 +146,12 @@ static void printDouble(double nbr)
 
     if (std::isnan(nbr) || std::isinf(nbr) || nbr > std::numeric_limits<int>::max() || nbr < std::numeric_limits<int>::min())
         std::cout << "int: impossible" << std::endl;
-    else
-        std::cout << "int: " << static_cast<int>(nbr) << std::endl;
+    else{
+		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
+	}
 
-	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(nbr) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "double: " << nbr << std::endl;
+	std::cout << "float: " << static_cast<float>(nbr) << "f" << std::endl;
+	std::cout << "double: " << nbr << std::endl;
 }
 
 static void pseudoLiteral(types dest_type, const std::string& pseudo_literal)
@@ -191,8 +194,8 @@ void ScalerConverter::convert(const std::string& literal)
 			} catch (const std::out_of_range& e) {
 				std::cout << "char: impossible" << std::endl;
 				std::cout << "int: impossible" << std::endl;
-				std::cout << std::fixed << std::setprecision(1) << "float: " << for_float(literal) << "f" << std::endl;
-				std::cout << std::fixed << std::setprecision(1) << "double: " << for_double(literal) << std::endl;
+				std::cout << "float: " << for_float(literal) << "f" << std::endl;
+				std::cout << "double: " << for_double(literal) << std::endl;
 			}
             break;
 
