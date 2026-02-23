@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name) {
 	this->grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) : grade(other.grade) {}
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other)
@@ -61,11 +61,15 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 /* THe new function for signing ig*/
 void	Bureaucrat::signForm(Form &f)
 {
-	f.beSigned(*this);
-	if (f.getSign() == true)
+	try
+	{
+		f.beSigned(*this);
 		std::cout << this->getName() << " signed " << f.getName() << std::endl;
-	else
-	 	std::cout << this->getName() << " couldn't sign " << f.getName() << " because " << "grade is too low" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->getName() << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 

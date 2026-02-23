@@ -3,7 +3,12 @@
 
 Form::Form() : name("Default"), sign(false), toSign(150), toExec(150) {}
 
-Form::Form(std::string name, bool sign, const int toSign, const int toExec) : name(name), sign(sign), toSign(toSign), toExec(toExec) {}
+Form::Form(std::string name, bool sign, const int toSign, const int toExec) : name(name), sign(sign), toSign(toSign), toExec(toExec) {
+	if (toSign < 1 || toExec < 1)
+		throw Form::GradeTooHighException();
+	if (toSign > 150 || toExec > 150)
+		throw Form::GradeTooLowException();
+}
 
 Form::Form(const Form& other) : sign(other.sign), toSign(other.toSign), toExec(other.toExec), name(other.name){}
 

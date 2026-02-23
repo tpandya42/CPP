@@ -14,10 +14,12 @@ class AForm
 		std::string const name;
 		bool	sign;
 		const int	toSign;
-		const int	toExec;
-		virtual void exec() const = 0;
-	
-	public:
+				const int	toExec;
+		
+			protected:
+				virtual void exec() const = 0;
+			
+			public:
 		AForm();
 		AForm(std::string name, bool sign, const int toSign, const int toExec);
 		AForm(const AForm &other);
