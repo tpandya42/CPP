@@ -16,7 +16,7 @@ Base* generate()
 		case 1: return new B;
 		case 2: return new C;
 	}
-	return nullptr;
+	return NULL;
 }
 
 void identify(Base *p)
