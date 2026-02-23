@@ -20,14 +20,14 @@ int main(void) {
 	std::cout << "data1:   " << data1.str << " & " << data1.i << std::endl;
 	std::cout << "dataptr: " << dataptr->str << " & " << dataptr->i << std::endl;
 
-	std::cout << "\nVerifying pointer addresses..." << std::endl;
+	std::cout << "\n LAST TEST: verifying pointer addresses..." << std::endl;
 	std::cout << "Address of original data1: " << &data1 << std::endl;
 	std::cout << "Address from deserialized ptr: " << dataptr << std::endl;
 
 	if (dataptr == &data1) {
-		std::cout << "\nSUCCESS: Pointers are the same. Serialization and deserialization worked!" << std::endl;
+		std::cout << "\npointers are the same...." << std::endl;
 	} else {
-		std::cout << "\nFAILURE: Pointers are different. Something went wrong." << std::endl;
+		std::cout << "\npointers are different...." << std::endl;
 	}
 
 	return (0);

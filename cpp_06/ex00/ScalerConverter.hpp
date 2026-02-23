@@ -7,6 +7,10 @@
 #include <cctype>
 #include <cstddef>
 #include <sstream>
+#include <cstdio>
+#include <iomanip>
+#include <cmath>
+#include <limits>
 
 enum types{
 	t_int,

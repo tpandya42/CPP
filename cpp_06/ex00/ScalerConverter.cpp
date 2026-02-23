@@ -1,8 +1,4 @@
 #include "ScalerConverter.hpp"
-#include <cstdio>
-#include <iomanip>
-#include <cmath>
-#include <limits>
 
 const char* ScalerConverter::NotDisplayable::what() const throw(){
 	return "Not displayable";

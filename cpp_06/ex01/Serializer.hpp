@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <cstdint>
-#include <memory>
 
 typedef struct Data 
 {
