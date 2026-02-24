@@ -1,7 +1,7 @@
 NAME = array
 
 CPP = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -I
 STD = -std=c++98
 RM = rm -f
 SRC = main.cpp

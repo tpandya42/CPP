@@ -16,7 +16,7 @@ class Array {
 		Array(const unsigned int n) : arr(new T[n]), _size(n) {};
 
 		Array(const Array& other) : arr(new T[other.size()]), _size(other._size){
-			for (int i = 0; i < this->_size; i++)
+			for (unsigned int i = 0; i < this->_size; i++)
 				this->arr[i] = other.arr[i];
 		};
 
@@ -28,7 +28,8 @@ class Array {
 			}
 			return (*this);
 		};
-		~Array();
+
+		~Array(){delete[]arr;}; 
 
 
 		unsigned int 	size() const {
