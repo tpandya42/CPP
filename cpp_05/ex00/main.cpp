@@ -2,13 +2,13 @@
 #include <iostream>
 
 void run_test(std::string const & test_name, void (*test_func)()) {
-	std::cout << "--- Running test: " << test_name << " ---" << std::endl;
+	std::cout << "Test -> " << test_name << std::endl;
 	test_func();
-	std::cout << "--- Test passed: " << test_name << " ---\n" << std::endl;
+	std::cout << "Test passed: " << test_name << std::endl;
 }
 
 void test_valid_creation() {
-	Bureaucrat b("Turing", 2);
+	Bureaucrat b("YouAreValid!!", 2);
 	std::cout << b << std::endl;
 }
 
@@ -29,14 +29,14 @@ void test_too_low_creation() {
 }
 
 void test_increment() {
-	Bureaucrat b("Babbage", 2);
+	Bureaucrat b("duhhh", 2);
 	std::cout << "Initial: " << b << std::endl;
 	b.incrementGrade();
 	std::cout << "After increment: " << b << std::endl;
 }
 
 void test_increment_limit() {
-	Bureaucrat b("Lovelace", 1);
+	Bureaucrat b("WhyAreYou", 1);
 	std::cout << "Initial: " << b << std::endl;
 	try {
 		b.incrementGrade();
@@ -46,14 +46,14 @@ void test_increment_limit() {
 }
 
 void test_decrement() {
-	Bureaucrat b("Hopper", 149);
+	Bureaucrat b("AreyouReal", 149);
 	std::cout << "Initial: " << b << std::endl;
 	b.decrementGrade();
 	std::cout << "After decrement: " << b << std::endl;
 }
 
 void test_decrement_limit() {
-	Bureaucrat b("Ritchie", 150);
+	Bureaucrat b("hehehe", 150);
 	std::cout << "Initial: " << b << std::endl;
 	try {
 		b.decrementGrade();
