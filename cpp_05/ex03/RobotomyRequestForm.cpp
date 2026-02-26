@@ -1,5 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", false, 72, 45), target(target){}
 
@@ -22,6 +23,12 @@ std::string  	RobotomyRequestForm::getTarget () const {
 
 void	RobotomyRequestForm::exec() const {
 	std::cout << " RRRRRRR..... zzuzuzuzuzuzuz....some drilling noiiceddd...slfjalfjs  GRGRRGR BHBHBHBH " << std::endl;
+
+	static bool seeded = false;
+	if (!seeded){
+		std::srand(std::time(0));
+		seeded = true;
+	}
 	if (std::rand() % 2 == 0)
 		std::cout << this->getTarget() << " has been successfully rebotomized!" << std::endl;
 	else

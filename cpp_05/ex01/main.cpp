@@ -60,19 +60,6 @@ int main() {
         std::cout << "\nAfter signing attempt:\n" << hard_form << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "Caught unexpected exception: " << e.what() << std::endl;
-    }
-    
-    print_header("Round 5: Edge Case");
-    try {
-        Bureaucrat bur("Bob", 1);
-        Form form("TestForm", 100, 100);
-        bur.signForm(form);
-        std::cout << ">>Attempting to sign again" << std::endl;
-        bur.signForm(form);
-    } catch(const std::exception& e) {
-        std::cerr << "Caught unexpected exception: " << e.what() << std::endl;
-    }
-
-
+    } 
     return 0;
 }

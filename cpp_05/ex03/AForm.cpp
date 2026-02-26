@@ -5,7 +5,7 @@ AForm::AForm() : name("Default"), sign(false), toSign(150), toExec(150) {}
 
 AForm::AForm(std::string name, bool sign, const int toSign, const int toExec) : name(name), sign(sign), toSign(toSign), toExec(toExec) {}
 
-AForm::AForm(const AForm& other) : sign(other.sign), toSign(other.toSign), toExec(other.toExec), name(other.name){}
+AForm::AForm(const AForm& other) : name(other.name),sign(other.sign), toSign(other.toSign), toExec(other.toExec) {}
 
 
 AForm& AForm::operator=(const AForm &other)

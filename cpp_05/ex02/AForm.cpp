@@ -79,5 +79,3 @@ std::ostream& operator<<(std::ostream& os, const AForm& f) {
 	   << ", Grade to Execute: " << f.getToExec();
 	return os;
 }
-
-

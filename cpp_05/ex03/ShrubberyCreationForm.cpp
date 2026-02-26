@@ -28,15 +28,13 @@ void 	ShrubberyCreationForm::exec()const {
 		std::cerr << "Can't Open file" << std::endl;
 		return ;
 	}
-	outfile << R"( 
-     /\
-    /**\
-   /****\
-  /******\
- /********\
-     ||||
-     ||||
-	)";
+	outfile << "     /\\ \n"
+			   "    /**\\ \n"
+			   "   /****\\ \n"
+			   "  /******\\ \n"
+			   " /********\\ \n"
+			   "     |||| \n"
+			   "     |||| \n";
 	outfile.close();
 
 }                                                                                                  

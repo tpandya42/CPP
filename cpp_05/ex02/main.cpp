@@ -8,7 +8,7 @@
 #include <ctime>
 
 void print_header(const std::string& title) {
-    std::cout << "\n\n--- " << title << " ---\n\n";
+    std::cout << "\n-->" << title << std::endl;
 }
 
 int main() {
@@ -33,7 +33,7 @@ int main() {
     intern.executeForm(shrub);
     intern.signForm(shrub);
     intern.executeForm(shrub);
-    Bureaucrat useless("Useless", 150);
+    Bureaucrat useless("ussselessss", 150);
     useless.executeForm(shrub);
 	std::cout << std::endl;
 

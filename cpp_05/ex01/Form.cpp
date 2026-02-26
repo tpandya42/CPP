@@ -59,16 +59,9 @@ void	Form::beSigned(const Bureaucrat &b)
 	this->sign = true;
 }
 
-
-
-
-
-
 std::ostream& operator<<(std::ostream& os, const Form& f) {
 	os << "Form " << f.getName() << ", signed: " << (f.getSign() ? "Yes" : "No")
 	   << ", Grade to Sign: " << f.getToSign()
 	   << ", Grade to Execute: " << f.getToExec();
 	return os;
 }
-
-
