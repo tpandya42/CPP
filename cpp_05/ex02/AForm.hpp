@@ -14,14 +14,14 @@ class AForm
 		std::string const name;
 		bool	sign;
 		const int	toSign;
-				const int	toExec;
+		const int	toExec;
 		
-			protected:
-				virtual void exec() const = 0;
+	protected:
+			virtual void exec() const = 0;
 			
-			public:
+	public:
 		AForm();
-		AForm(std::string name, bool sign, const int toSign, const int toExec);
+		AForm(std::string name, const int toSign, const int toExec);
 		AForm(const AForm &other);
 		AForm& operator=(const AForm& other);
 		virtual ~AForm();
@@ -34,7 +34,7 @@ class AForm
 
 
 		// Member Function
-		void	beSigned(Bureaucrat &b);
+		void	beSigned(const Bureaucrat &b);
 		void	execute(Bureaucrat const & executor) const;
 
 		//Exception as well

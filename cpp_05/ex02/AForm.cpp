@@ -3,14 +3,14 @@
 
 AForm::AForm() : name("Default"), sign(false), toSign(150), toExec(150) {}
 
-AForm::AForm(std::string name, bool sign, const int toSign, const int toExec) : name(name), sign(sign), toSign(toSign), toExec(toExec) {
+AForm::AForm(std::string name, const int toSign, const int toExec) : name(name), sign(false), toSign(toSign), toExec(toExec) {
 	if (toSign < 1 || toExec < 1)
 		throw AForm::GradeTooHighException();
 	if (toSign > 150 || toExec > 150)
 		throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm& other) : sign(other.sign), toSign(other.toSign), toExec(other.toExec), name(other.name){}
+AForm::AForm(const AForm& other) : name(other.name), sign(other.sign), toSign(other.toSign), toExec(other.toExec) {}
 
 
 AForm& AForm::operator=(const AForm &other)
@@ -56,7 +56,7 @@ const char* AForm::FormNotSignedExecption::what() const throw(){
 }
 
 // THe beSigned (ig it makes sense)
-void	AForm::beSigned(Bureaucrat &b)
+void	AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() > this->toSign)
 		throw AForm::GradeTooLowException();
@@ -74,8 +74,9 @@ void 	AForm::execute(const Bureaucrat & executor) const {
 
 
 std::ostream& operator<<(std::ostream& os, const AForm& f) {
-	// will print all the info after implementing getters
-	os << f.getName() << "is signed ?... let's see" << f.getSign() <<" good you should now know if it is signed or not... lets move on to grade required for signing and executing respectively... Grade to sign: " << f.getToSign() << " , grade to execute: "<<f.getToExec() << " perfect.. that should be it for now " << std::endl;
+	os << "Form " << f.getName() << ", signed: " << (f.getSign() ? "Yes" : "No")
+	   << ", Grade to Sign: " << f.getToSign()
+	   << ", Grade to Execute: " << f.getToExec();
 	return os;
 }
 

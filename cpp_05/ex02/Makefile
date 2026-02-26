@@ -4,7 +4,7 @@ CPP = c++
 FLAGS = -Wall -Werror -Wextra
 STD = -std=c++98
 RM = rm -f
-SRC = Bureaucrat.cpp main.cpp Form.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp 
+SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 

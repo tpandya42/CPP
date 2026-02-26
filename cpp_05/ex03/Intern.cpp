@@ -15,28 +15,44 @@ Intern& Intern::operator=(const Intern& other){
 }
 Intern::~Intern(){}
 
+static AForm* createRobotomy(const std::string& target)
+{
+    return new RobotomyRequestForm(target);
+}
+
+static AForm* createPresidential(const std::string& target)
+{
+    return new PresidentialPardonForm(target);
+}
+
+static AForm* createShrubbery(const std::string& target)
+{
+    return new ShrubberyCreationForm(target);
+}
+
 AForm* Intern::makeForm(const std::string& formName, const std::string& formTarget)
 {
-	AForm* forms[] = {
-		new RobotomyRequestForm(formTarget),
-		new ShrubberyCreationForm(formTarget),
-		new PresidentialPardonForm(formTarget)
+	struct Formss {
+		const char* name;
+		AForm* (*create_function)(const std::string&);
 	};
 
-	std::string formNames[] = {
-		"robotomy request",
-		"presidential pardon",
-		"shrubbery creation"
+	static const Formss yes_formss[] = {
+		{"robotomy request", createRobotomy},
+		{"presidential pardon", createPresidential},
+		{"shrubbery creation", createShrubbery}
 	};
 
-	for (int i(0); i < 3; i++)
+	for (size_t i = 0; i < 3; ++i)
 	{
-		if (formName == formNames[i])
+		if (formName == yes_formss[i].name)
 		{
 			std::cout << "Intern creates " << formName << std::endl;
-			return forms[i];
+			return yes_formss[i].create_function(formTarget);
 		}
 	}
-	std::cout << "Sad.. Intern was unable to create " << formName << " form..."<< std::endl;
-	return nullptr;	
+
+	std::cout << "hahah... get me as your intern... i can make any form... T-T> "
+		<< formName << " can't be created..." << std::endl;
+	return NULL;
 }

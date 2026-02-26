@@ -3,7 +3,7 @@
 
 // For now.. cause it makes no sense to me
 //ShrubberyCreationForm::ShrubberyCreationForm() : AForm(){}
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", false, 145, 137), target(target){}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), target(target){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), target(other.target){}
 
@@ -28,15 +28,13 @@ void 	ShrubberyCreationForm::exec()const {
 		std::cerr << "Can't Open file" << std::endl;
 		return ;
 	}
-	outfile << R"( 
-     /\
-    /**\
-   /****\
-  /******\
- /********\
-     ||||
-     ||||
-	)";
+	outfile << "     /\\ \n"
+			   "    /**\\ \n"
+			   "   /****\\ \n"
+			   "  /******\\ \n"
+			   " /********\\ \n"
+			   "     |||| \n"
+			   "     |||| \n";
 	outfile.close();
 
 }                                                                                                  

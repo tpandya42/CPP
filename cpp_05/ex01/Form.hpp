@@ -17,7 +17,7 @@ class Form
 	
 	public:
 		Form();
-		Form(std::string name, bool sign, const int toSign, const int toExec);
+		Form(std::string name, const int toSign, const int toExec);
 		Form(const Form &other);
 		Form& operator=(const Form& other);
 		~Form();
@@ -30,7 +30,7 @@ class Form
 
 
 		// Member Function
-		void	beSigned(Bureaucrat &b);
+		void	beSigned(const Bureaucrat &b);
 
 		//Exception as well
 		class GradeTooHighException : public std::exception {
