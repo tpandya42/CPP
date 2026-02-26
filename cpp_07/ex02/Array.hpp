@@ -28,7 +28,8 @@ class Array {
 			}
 			return (*this);
 		};
-		~Array();
+
+		~Array(){delete[]arr;}; 
 
 
 		unsigned int 	size() const {
