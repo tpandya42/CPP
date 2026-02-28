@@ -1,12 +1,26 @@
 #ifndef ITER_HPP
 # define ITER_HPP
 
-template<typename T, typename X>
-void 	iter(T *_arrayAddress, const int size, void(*func)(X))
+# include <cstddef>
+
+
+// For non-const arrays
+template<typename T>
+void iter(T* array, const size_t length, void (*f)(T&))
 {
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < length; i++)
 	{
-		func(_arrayAddress[i]);
+		f(array[i]);
+	}
+}
+
+// For const arrays
+template<typename T>
+void iter(const T* array, const size_t length, void (*f)(const T&))
+{
+	for (size_t i = 0; i < length; i++)
+	{
+		f(array[i]);
 	}
 }
 
