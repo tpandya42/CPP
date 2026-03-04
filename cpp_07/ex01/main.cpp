@@ -18,11 +18,10 @@ int main() {
   size_t tab_size = 5;
 
   std::cout << "Before: ";
-  iter( tab, tab_size, printElement<int> ); // Calls const overload of iter
+  iter( tab, tab_size, printElement<int> );
   std::cout << std::endl;
 
-  iter( tab, tab_size, addOne<int> ); // Calls non-const overload
-
+  iter( tab, tab_size, addOne<int> ); 
   std::cout << "After:  ";
   iter( tab, tab_size, printElement<int> );
   std::cout << std::endl << std::endl;
@@ -33,11 +32,9 @@ int main() {
   size_t c_tab_size = 12;
 
   std::cout << "Printing const array: ";
-  iter( c_tab, c_tab_size, printElement<char> ); // Must use const overload
+  iter( c_tab, c_tab_size, printElement<char> ); 
   std::cout << std::endl;
 
-  // following line should throw an compiler errorr!!!!!!!!!!!!!!!!!11!
-   //iter( c_tab, c_tab_size, addOne<const char> );
 
   return 0;
 }
