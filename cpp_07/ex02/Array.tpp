@@ -1,23 +1,21 @@
-#include "Array.hpp"
+template<typename T>
+Array<T>::Array() : arr(NULL), _size(0) {}
 
 template<typename T>
-Array::Array() : arr(NULL), _size(0){}
+Array<T>::Array(const unsigned int n) : arr(new T[n]()), _size(n) {}
 
 template<typename T>
-Array::Array(const unsigned int n) : array(new T[n]), _size(n) {}
-
-template<typename T>
-Array::Array(const Array& other) : arr(new T[other.size()]) , _size(other.size()) {
+Array<T>::Array(const Array& other) : arr(new T[other._size]()), _size(other._size) {
 	for (unsigned int i = 0; i < this->_size; i++)
 		this->arr[i] = other.arr[i];
 }
 
 template<typename T>
-Array::Array& operator=(const Array& other){
+Array<T>& Array<T>::operator=(const Array& other) {
 	if (this != &other)
 	{
 		delete [] this->arr;
-		this->_size = other.size();
+		this->_size = other._size;
 		this->arr = new T[this->_size];
 		for (unsigned int i = 0; i < this->_size; i++)
 			this->arr[i] = other.arr[i];
@@ -25,24 +23,25 @@ Array::Array& operator=(const Array& other){
 	return (*this);
 }
 
-Array::~Array(){ delete[] array; }  
+template<typename T>
+Array<T>::~Array() { delete[] arr; }
 
-unsigned int	Array::size() const {
+template<typename T>
+unsigned int Array<T>::size() const {
 	return (this->_size);
 }
 
 template<typename T>
-T& Array::operator[](unsigned int i)
-{
+T& Array<T>::operator[](unsigned int i) {
 	if (i >= _size)
-		throw OutofBounds();
+		throw OutOfBounds();
 	return (this->arr[i]);
 }
 
 template<typename T>
-const T& Array::operator[](unsigned int i) const {
-	if (i >= size)
-		throw OutofBounds();
+const T& Array<T>::operator[](unsigned int i) const {
+	if (i >= _size)
+		throw OutOfBounds();
 	return (this->arr[i]);
 }
 
