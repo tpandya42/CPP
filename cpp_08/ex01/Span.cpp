@@ -1,75 +1,62 @@
 #include "Span.hpp"
 #include <algorithm>
-#include <vector>
+#include <climits>
 
-Span::Span(unsigned int N) : max_size(N), vector(0) {};
+Span::Span(unsigned int N) : _maxSize(N) {}
 
-Span::Span(const Span& other)
-{
-	*this = other;
-}
+Span::Span(const Span& other) : _maxSize(other._maxSize), _data(other._data) {}
 
 Span &Span::operator=(const Span& other)
 {
 	if (this != &other)
 	{
-		this->max_size = other.max_size;
-		this->vector = other.vector;
+		this->_maxSize = other._maxSize;
+		this->_data = other._data;
 	}
 	return *this;
 }
 
-Span::~Span(){};
+Span::~Span() {}
 
-void 	Span::addNumber(int n){
-	if (this->vector.size() == this->max_size)
-		throw Span::OutOfBound();
-	this->vector.push_back(n);
+void Span::addNumber(int n)
+{
+	if (_data.size() >= _maxSize)
+		throw Span::SpanFullException();
+	_data.push_back(n);
 }
 
-unsigned int 	Span::shortestSpan() const
+unsigned int Span::shortestSpan() const
 {
-	if (vector.size() < 2)
-		throw Span::InvalidSpan();
+	if (_data.size() < 2)
+		throw Span::NoSpanException();
 
-	std::vector<int> temp(vector);
-	std::sort(temp.begin(), temp.end());
-	int result;
-	result = temp.at(0) - temp.at(1);
-	for (size_t i = 1; i < temp.size() - 1; ++i)
+	std::vector<int> sorted(_data);
+	std::sort(sorted.begin(), sorted.end());
+
+	unsigned int minSpan = static_cast<unsigned int>(sorted[1] - sorted[0]);
+	for (size_t i = 2; i < sorted.size(); ++i)
 	{
-		int j = temp[i + 1] - temp[0];
-		if (j < result)
-			result = j;
+		unsigned int diff = static_cast<unsigned int>(sorted[i] - sorted[i - 1]);
+		if (diff < minSpan)
+			minSpan = diff;
 	}
-	return result;	
+	return minSpan;
 }
 
 unsigned int Span::longestSpan() const
 {
-	std::vector<int> temp(vector);
-	if (temp.size() < 2)
-		throw Span::InvalidSpan();
+	if (_data.size() < 2)
+		throw Span::NoSpanException();
 
-	int min = *std::min_element(temp.begin(), temp.end());
-	int max = *std::max_element(temp.begin(), temp.end());
-	return (abs(max-min));
+	int min = *std::min_element(_data.begin(), _data.end());
+	int max = *std::max_element(_data.begin(), _data.end());
+	return static_cast<unsigned int>(max - min);
 }
 
-void Span::printer()
-{
-	std::vector<int> temp(vector);
-	std::vector<int>::const_iterator it;
-
-	for (it = temp.begin(); it != temp.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+char const* Span::SpanFullException::what() const throw() {
+	return "Cannot add: Span is full";
 }
 
-char const* Span::OutOfBound::what() const throw() {
-	return "Invalid Size";
-}
-
-char const* Span::InvalidSpan::what() const throw(){
-	return "Invalid number of elements";
+char const* Span::NoSpanException::what() const throw() {
+	return "Not enough elements to find a span";
 }
