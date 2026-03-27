@@ -8,19 +8,19 @@
 
 class BitcoinExchange {
 	private:
-		double	_price;
 		std::map<std::string, float> _btc;
+		BitcoinExchange();
 	
 	public:
-		BitcoinExchange();
+		BitcoinExchange(const char *inputFile);
 		~BitcoinExchange();	
 		BitcoinExchange(const BitcoinExchange& other);
 		BitcoinExchange& operator=(BitcoinExchange const & other);
 
-		void 	loadDataset(const char* filename);
-		void 	getBtcValue(std::map<std::string, float>& btc, float target);	
+		void 	loadDataset();
+		void parseInputFile(const char *filename);
+		float calculateValue(std::string& date);
+		static bool validDate(const tm &date);
 
 };
-
-
 #endif // !BITCOINEXCHANGE_HPP
