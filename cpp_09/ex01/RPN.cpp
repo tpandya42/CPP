@@ -1,4 +1,8 @@
 #include "RPN.hpp"
+#include <cstdlib>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 RPN::RPN(){}
 
@@ -18,24 +22,32 @@ RPN& RPN::operator=(const RPN& other)
 	return (*this);
 }
 
-void 	printStack(std::stack<std::string>& _input)
-{
-	while (!_input.empty())
-	{
-		_input.pop();
-		std::cout << " ";
-	}
-	std::cout << std::endl;
-}
 
 void 	RPN::parseInput(char **argv)
 {
 	std::stringstream ss;
 	std::string token;
-	ss << argv;
-	while (ss >> token)
-	{
-		this->_input.push(token);
-	}
 }
 
+double RPN::_plus(double a, double b)
+{
+	return (a + b);
+}
+
+double RPN::_minus(double a, double b)
+{
+	return (a - b);
+}
+
+double RPN::_multiply(double a, double b)
+{
+	return (a * b);
+}
+
+
+double RPN::_divide(double a, double b)
+{
+	if (a == 0)
+		throw std::runtime_error("Division with Zero");
+	return (a / b);
+}
