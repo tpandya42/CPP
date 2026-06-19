@@ -25,7 +25,7 @@ class RPN {
 		RPN(const RPN& other);
 		RPN& operator=(const RPN& other);
 
-		void 	parseInput(char **argv);
+		void 	parseInput(const std::string &str);
 		void 	calculateResult(double (RPN::*op)(double a, double b));
 			
 };

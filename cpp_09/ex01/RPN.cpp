@@ -1,5 +1,7 @@
 #include "RPN.hpp"
+#include <cctype>
 #include <cstdlib>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -23,10 +25,26 @@ RPN& RPN::operator=(const RPN& other)
 }
 
 
-void 	RPN::parseInput(char **argv)
+void 	RPN::parseInput(const std::string &str)
 {
-	std::stringstream ss;
+	std::stringstream ss(str);
 	std::string token;
+	int 	n;
+
+	while (std::getline(ss, token, ' '))
+	{
+		if (token.length() == 1 && std::isdigit(token[0]) || token.length() == 2 && token[0] == '-' && isdigit(token[1]))
+		{
+			std::stringstream(token) >> n;
+			this->_input.push(n);
+		}
+		else if (token == "+")
+			calculateResult(&RPN::_plus);
+		else if (token == "-")
+			calculateResult(&RPN::_minus);
+//		else if (token == "*")
+			
+	}
 }
 
 double RPN::_plus(double a, double b)
