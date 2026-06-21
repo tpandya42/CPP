@@ -6,6 +6,7 @@
 #include <deque>
 #include <algorithm>
 
-std::vector<int> mergeSort(std::vector<int> &);
+std::vector<int> mergeInsertSort(std::vector<int> &v);
+
 
 #endif
