@@ -175,30 +175,3 @@ std::vector<int> mergeInsertSort(std::vector<int> &v)
 
 	return main;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
