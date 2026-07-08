@@ -1,24 +1,22 @@
 #ifndef RPN_HPP
 # define RPN_HPP
 
-#include <cmath>
 #include <iostream>
-#include <algorithm>
 #include <stack>
+#include <list>
 #include <sstream>
 #include <string>
 #include <cstdlib>
 #include <stdexcept>
-#include <string>
-#include <vector>
 
 class RPN {
 	private:
-		std::stack<double> _input;
+		std::stack<double, std::list<double> > _input;
 		double _plus(double a, double b);
 		double _minus(double a, double b);
 		double _multiply(double a, double b);
 		double _divide(double a, double b);
+
 	public:
 		RPN();
 		~RPN();
@@ -27,7 +25,7 @@ class RPN {
 
 		void 	parseInput(const std::string &str);
 		void 	calculateResult(double (RPN::*op)(double a, double b));
-			
+		double 	getResult() const;
 };
 
 #endif

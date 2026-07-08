@@ -5,10 +5,14 @@
 #include <string>
 #include <fstream>
 #include <map>
+#include <exception>
+#include <sstream>
+#include <stdexcept>
+#include <cstdlib>
 
 class BitcoinExchange {
 	private:
-		std::map<std::string, float> _btc;
+		std::map<std::string, double> _btc;
 		BitcoinExchange();
 	
 	public:
@@ -18,9 +22,9 @@ class BitcoinExchange {
 		BitcoinExchange& operator=(BitcoinExchange const & other);
 
 		void 	loadDataset();
-		void parseInputFile(const char *filename);
-		float calculateValue(std::string& date);
-		static bool validDate(const tm &date);
-
+		void 	parseInputFile(const char *filename);
+		double 	calculateValue(const std::string& date);
+		static bool validDate(const std::string &date);
 };
+
 #endif // !BITCOINEXCHANGE_HPP
