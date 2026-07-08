@@ -4,7 +4,7 @@ CPP = c++
 FLAGS = -Wall -Werror -Wextra
 STD = -std=c++98
 RM = rm -f
-SRC = main.cpp RPN.cpp
+SRC = main.cpp PmergeMe.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

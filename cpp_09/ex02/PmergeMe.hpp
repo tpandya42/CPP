@@ -1,5 +1,5 @@
-#ifndef PMERGE_HPP
-#define PMERGE_HPP
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
 #include <iostream>
 #include <vector>
@@ -7,6 +7,6 @@
 #include <algorithm>
 
 std::vector<int> mergeInsertSort(std::vector<int> &v);
-
+std::deque<int> mergeInsertSort(std::deque<int> &d);
 
 #endif
